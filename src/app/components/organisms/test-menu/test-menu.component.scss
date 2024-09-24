@@ -1,0 +1,13 @@
+.menu {
+    li {
+        display: inline;
+        padding: 10px;
+        margin: 5px;
+        background-color: aqua;
+        border-radius: 10px;
+        &:hover {
+            background-color: aquamarine;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+<app-layout>
+    <!-- Your page content -->
+    <div>
+        home-page works!
+        <button (click)="ngOnInit()" style="padding: 10px">test</button>
+        <ul>
+            <li *ngFor="let city of cities">{{ city.name }}</li>
+        </ul>
+        <ul>
+            <li *ngFor="let product of products">{{ product.name }}</li>
+        </ul>
+    </div>
+</app-layout>
