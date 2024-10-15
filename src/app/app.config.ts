@@ -1,7 +1,11 @@
 import { ApplicationConfig } from "@angular/core"
 import { provideRouter } from "@angular/router"
 
-import { provideHttpClient, withInterceptors } from "@angular/common/http"
+import {
+    provideHttpClient,
+    withFetch,
+    withInterceptors,
+} from "@angular/common/http"
 import { provideClientHydration } from "@angular/platform-browser"
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async"
 import { provideIonicAngular } from "@ionic/angular/standalone"
@@ -17,7 +21,8 @@ export const appConfig: ApplicationConfig = {
         provideClientHydration(),
         provideAnimationsAsync(),
         provideHttpClient(
-            withInterceptors([httpErrorInterceptor, authInterceptor])
+            withInterceptors([httpErrorInterceptor, authInterceptor]),
+            withFetch()
         ),
         provideIonicAngular({}),
         ErrorHandlingService,

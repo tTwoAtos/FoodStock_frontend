@@ -43,7 +43,6 @@ testem.log
 Thumbs.db
 
 # Environments vars
-src/environments/
-
+src/environments/**
 # open api generator
 src/app/apis/*
