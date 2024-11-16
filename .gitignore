@@ -44,5 +44,3 @@ Thumbs.db
 
 # Environments vars
 src/environments/**
-# open api generator
-src/app/apis/*

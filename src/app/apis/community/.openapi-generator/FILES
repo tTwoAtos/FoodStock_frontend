@@ -1,0 +1,15 @@
+.gitignore
+.openapi-generator-ignore
+README.md
+api.module.ts
+api/api.ts
+api/communityController.service.ts
+api/communityController.serviceInterface.ts
+configuration.ts
+encoder.ts
+git_push.sh
+index.ts
+model/community.ts
+model/models.ts
+param.ts
+variables.ts
