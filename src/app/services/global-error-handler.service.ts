@@ -18,42 +18,42 @@ export class ErrorHandlingService {
         const status = error.status
 
         switch (status) {
-        case 400:
-            this.toaster.error("Requête incorrecte. Vérifiez les données.")
-            break
+            case 400:
+                this.toaster.error("Requête incorrecte. Vérifiez les données.")
+                break
 
-        case 401:
-            this.toaster.error("Veuillez vous reconnecter.")
-            this.router.navigate(["/login"])
-            break
+            case 401:
+                this.toaster.error("Veuillez vous reconnecter.")
+                this.router.navigate(["/login"])
+                break
 
-        case 403:
-            this.toaster.error(
-                "Accès refusé. Vous n'avez pas les permissions nécessaires."
-            )
-            break
+            case 403:
+                this.toaster.error(
+                    "Accès refusé. Vous n'avez pas les permissions nécessaires."
+                )
+                break
 
-        case 409:
-            this.toaster.error(
-                "Conflit lors de l'opération. Vérifiez les données envoyées."
-            )
-            break
+            case 409:
+                this.toaster.error(
+                    "Conflit lors de l'opération. Vérifiez les données envoyées."
+                )
+                break
 
-        case 500:
-            this.toaster.error(
-                "Erreur interne du serveur. Merci de réessayer plus tard."
-            )
-            break
+            case 500:
+                this.toaster.error(
+                    "Erreur interne du serveur. Merci de réessayer plus tard."
+                )
+                break
 
-        case 503:
-            this.toaster.error(
-                "Service indisponible. Merci de réessayer plus tard."
-            )
-            break
+            case 503:
+                this.toaster.error(
+                    "Service indisponible. Merci de réessayer plus tard."
+                )
+                break
 
-        default:
-            this.toaster.error(message)
-            break
+            default:
+                this.toaster.error(message)
+                break
         }
     }
 }
