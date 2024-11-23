@@ -1,8 +1,14 @@
 import { Component } from "@angular/core"
-import { IonCol, IonGrid, IonButton, IonRow, IonIcon } from "@ionic/angular/standalone";
+import {
+    IonCol,
+    IonGrid,
+    IonButton,
+    IonRow,
+    IonIcon,
+} from "@ionic/angular/standalone"
 
-import { addIcons } from 'ionicons';
-import { people, scan, basket } from 'ionicons/icons';
+import { addIcons } from "ionicons"
+import { people, scan, basket } from "ionicons/icons"
 
 @Component({
     selector: "app-footer",
@@ -13,7 +19,6 @@ import { people, scan, basket } from 'ionicons/icons';
 })
 export class FooterComponent {
     constructor() {
-        addIcons({ people, scan, basket });
+        addIcons({ people, scan, basket })
     }
-
 }

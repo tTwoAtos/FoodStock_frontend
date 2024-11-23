@@ -10,8 +10,4 @@ import { HeaderComponent } from "@app/components/organisms/header/header.compone
     templateUrl: "./app-layout.component.html",
     styleUrl: "./app-layout.component.scss",
 })
-export class AppLayoutComponent {
-
-
-
-}
+export class AppLayoutComponent {}

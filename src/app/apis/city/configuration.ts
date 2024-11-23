@@ -1,23 +1,23 @@
-import { HttpParameterCodec } from '@angular/common/http';
-import { Param } from './param';
+import { HttpParameterCodec } from "@angular/common/http"
+import { Param } from "./param"
 
 export interface ConfigurationParameters {
     /**
      *  @deprecated Since 5.0. Use credentials instead
      */
-    apiKeys?: {[ key: string ]: string};
-    username?: string;
-    password?: string;
+    apiKeys?: { [key: string]: string }
+    username?: string
+    password?: string
     /**
      *  @deprecated Since 5.0. Use credentials instead
      */
-    accessToken?: string | (() => string);
-    basePath?: string;
-    withCredentials?: boolean;
+    accessToken?: string | (() => string)
+    basePath?: string
+    withCredentials?: boolean
     /**
      * Takes care of encoding query- and form-parameters.
      */
-    encoder?: HttpParameterCodec;
+    encoder?: HttpParameterCodec
     /**
      * Override the default method for encoding path parameters in various
      * <a href="https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#style-values">styles</a>.
@@ -25,32 +25,32 @@ export interface ConfigurationParameters {
      * See {@link README.md} for more details
      * </p>
      */
-    encodeParam?: (param: Param) => string;
+    encodeParam?: (param: Param) => string
     /**
      * The keys are the names in the securitySchemes section of the OpenAPI
      * document. They should map to the value used for authentication
      * minus any standard prefixes such as 'Basic' or 'Bearer'.
      */
-    credentials?: {[ key: string ]: string | (() => string | undefined)};
+    credentials?: { [key: string]: string | (() => string | undefined) }
 }
 
 export class Configuration {
     /**
      *  @deprecated Since 5.0. Use credentials instead
      */
-    apiKeys?: {[ key: string ]: string};
-    username?: string;
-    password?: string;
+    apiKeys?: { [key: string]: string }
+    username?: string
+    password?: string
     /**
      *  @deprecated Since 5.0. Use credentials instead
      */
-    accessToken?: string | (() => string);
-    basePath?: string;
-    withCredentials?: boolean;
+    accessToken?: string | (() => string)
+    basePath?: string
+    withCredentials?: boolean
     /**
      * Takes care of encoding query- and form-parameters.
      */
-    encoder?: HttpParameterCodec;
+    encoder?: HttpParameterCodec
     /**
      * Encoding of various path parameter
      * <a href="https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#style-values">styles</a>.
@@ -58,33 +58,31 @@ export class Configuration {
      * See {@link README.md} for more details
      * </p>
      */
-    encodeParam: (param: Param) => string;
+    encodeParam: (param: Param) => string
     /**
      * The keys are the names in the securitySchemes section of the OpenAPI
      * document. They should map to the value used for authentication
      * minus any standard prefixes such as 'Basic' or 'Bearer'.
      */
-    credentials: {[ key: string ]: string | (() => string | undefined)};
+    credentials: { [key: string]: string | (() => string | undefined) }
 
     constructor(configurationParameters: ConfigurationParameters = {}) {
-        this.apiKeys = configurationParameters.apiKeys;
-        this.username = configurationParameters.username;
-        this.password = configurationParameters.password;
-        this.accessToken = configurationParameters.accessToken;
-        this.basePath = configurationParameters.basePath;
-        this.withCredentials = configurationParameters.withCredentials;
-        this.encoder = configurationParameters.encoder;
+        this.apiKeys = configurationParameters.apiKeys
+        this.username = configurationParameters.username
+        this.password = configurationParameters.password
+        this.accessToken = configurationParameters.accessToken
+        this.basePath = configurationParameters.basePath
+        this.withCredentials = configurationParameters.withCredentials
+        this.encoder = configurationParameters.encoder
         if (configurationParameters.encodeParam) {
-            this.encodeParam = configurationParameters.encodeParam;
-        }
-        else {
-            this.encodeParam = param => this.defaultEncodeParam(param);
+            this.encodeParam = configurationParameters.encodeParam
+        } else {
+            this.encodeParam = (param) => this.defaultEncodeParam(param)
         }
         if (configurationParameters.credentials) {
-            this.credentials = configurationParameters.credentials;
-        }
-        else {
-            this.credentials = {};
+            this.credentials = configurationParameters.credentials
+        } else {
+            this.credentials = {}
         }
     }
 
@@ -95,16 +93,16 @@ export class Configuration {
      * @param contentTypes - the array of content types that are available for selection
      * @returns the selected content-type or <code>undefined</code> if no selection could be made.
      */
-    public selectHeaderContentType (contentTypes: string[]): string | undefined {
+    public selectHeaderContentType(contentTypes: string[]): string | undefined {
         if (contentTypes.length === 0) {
-            return undefined;
+            return undefined
         }
 
-        const type = contentTypes.find((x: string) => this.isJsonMime(x));
+        const type = contentTypes.find((x: string) => this.isJsonMime(x))
         if (type === undefined) {
-            return contentTypes[0];
+            return contentTypes[0]
         }
-        return type;
+        return type
     }
 
     /**
@@ -116,14 +114,14 @@ export class Configuration {
      */
     public selectHeaderAccept(accepts: string[]): string | undefined {
         if (accepts.length === 0) {
-            return undefined;
+            return undefined
         }
 
-        const type = accepts.find((x: string) => this.isJsonMime(x));
+        const type = accepts.find((x: string) => this.isJsonMime(x))
         if (type === undefined) {
-            return accepts[0];
+            return accepts[0]
         }
-        return type;
+        return type
     }
 
     /**
@@ -137,15 +135,20 @@ export class Configuration {
      * @return True if the given MIME is JSON, false otherwise.
      */
     public isJsonMime(mime: string): boolean {
-        const jsonMime: RegExp = new RegExp('^(application\/json|[^;/ \t]+\/[^;/ \t]+[+]json)[ \t]*(;.*)?$', 'i');
-        return mime !== null && (jsonMime.test(mime) || mime.toLowerCase() === 'application/json-patch+json');
+        const jsonMime: RegExp = new RegExp(
+            "^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t]*(;.*)?$",
+            "i"
+        )
+        return (
+            mime !== null &&
+            (jsonMime.test(mime) ||
+                mime.toLowerCase() === "application/json-patch+json")
+        )
     }
 
     public lookupCredential(key: string): string | undefined {
-        const value = this.credentials[key];
-        return typeof value === 'function'
-            ? value()
-            : value;
+        const value = this.credentials[key]
+        return typeof value === "function" ? value() : value
     }
 
     private defaultEncodeParam(param: Param): string {
@@ -157,10 +160,11 @@ export class Configuration {
         //
         // But: if that's all you need (i.e.: the most common use-case): no need for customization!
 
-        const value = param.dataFormat === 'date-time' && param.value instanceof Date
-            ? (param.value as Date).toISOString()
-            : param.value;
+        const value =
+            param.dataFormat === "date-time" && param.value instanceof Date
+                ? (param.value as Date).toISOString()
+                : param.value
 
-        return encodeURIComponent(String(value));
+        return encodeURIComponent(String(value))
     }
 }

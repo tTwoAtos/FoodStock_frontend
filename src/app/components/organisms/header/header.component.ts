@@ -1,8 +1,8 @@
 import { Component, Input } from "@angular/core"
-import { IonIcon, IonButton } from "@ionic/angular/standalone";
+import { IonIcon, IonButton } from "@ionic/angular/standalone"
 
-import { addIcons } from 'ionicons';
-import { person, caretBack } from 'ionicons/icons';
+import { addIcons } from "ionicons"
+import { person, caretBack } from "ionicons/icons"
 
 @Component({
     selector: "app-header",
@@ -13,12 +13,8 @@ import { person, caretBack } from 'ionicons/icons';
 })
 export class HeaderComponent {
     constructor() {
-        addIcons({ person, caretBack });
+        addIcons({ person, caretBack })
     }
     path = ""
     title = "Mes Communautées"
-
-
-
 }
-

@@ -5,7 +5,7 @@ import { CommunityPageComponent } from "./pages/community-page/community-page.co
 export const routes: Routes = [
     { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "home", component: HomePageComponent },
-    { path: "community", component: CommunityPageComponent }
+    { path: "community", component: CommunityPageComponent },
     // {
     //     path: "login",
     //     title: "Connexion",
