@@ -2,12 +2,19 @@
     width: 100%;
 }
 
+ion-row {
+    height: 5em;
+    border: solid 2px rgba(125, 125, 125, 0.75);
+    border-radius: 15px;
+    align-items: center;
+}
+
 ion-col {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-#title {
+.title {
     margin: 0;
 }

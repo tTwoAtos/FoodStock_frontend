@@ -39,7 +39,7 @@ import { caretForward, menu } from "ionicons/icons"
 })
 export class CommunityPageComponent {
     constructor() {
-        addIcons({ menu, caretForward })
+        addIcons({ menu, caretForward });
     }
 
     public name = "Aprentis"
