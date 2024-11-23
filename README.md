@@ -13,6 +13,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
    que vous n'avez pas sur votre PC.
    Assurez vous que tout les autres microservices sont en train de tourner, ainsi que la gateway et lancer la commande `npm run generate-apis`
 
+
+## DEFAULT README
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

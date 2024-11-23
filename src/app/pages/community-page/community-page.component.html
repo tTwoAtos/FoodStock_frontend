@@ -1,0 +1,31 @@
+<app-layout>
+    <div>
+        <ion-list class="communitieslist">
+            <ion-reorder-group [disabled]="false">
+                <!-- *ngFor="let community of communities" -->
+                <ion-item>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col size="auto">
+                                <ion-reorder>
+                                    <ion-icon slot="icon-only" name="menu"></ion-icon>
+                                </ion-reorder>
+                            </ion-col>
+                            <ion-col>
+                                <h2 id="title">Penne à la carbo car c'est bon (^^)</h2>
+                            </ion-col>
+                            <ion-col size="auto">
+                                <ion-badge color="primary"> 45</ion-badge>
+                            </ion-col>
+                            <ion-col size="auto">
+                                <ion-button>
+                                    <ion-icon slot="icon-only" name="caret-forward"></ion-icon>
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-item>
+            </ion-reorder-group>
+        </ion-list>
+    </div>
+</app-layout>
